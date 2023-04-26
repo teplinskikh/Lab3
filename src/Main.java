@@ -1,3 +1,4 @@
+package com.company;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -73,7 +74,7 @@ public class Main {
      */
     public static long testDeleteList(List<Integer> list) {
         long startTime = System.currentTimeMillis();
-        for (int i = 0; i < 10000; i++) {
+        for (int i = 9999; i >= 0; i--) {
             list.remove(i);
         }
         return System.currentTimeMillis() - startTime;
