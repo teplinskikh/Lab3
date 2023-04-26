@@ -5,6 +5,28 @@ import java.util.List;
 public class Main {
 
     /**
+     * Output of measurement results as a table for the ArrayList class and LinkedList class
+     * @param args main arguments
+     */
+    public static void main(String[] args) {
+        List<Integer> arrayList = new ArrayList<>();
+        List<Integer> linkedList = new LinkedList<>();
+
+        System.out.printf("%-25s%-25s%-25s%-25s%n", "", "ADD TO END", "GET", "DELETE");
+
+        long addToEndArrTime = testAddList(arrayList);
+        long addToEndLinkedTime = testAddList(linkedList);
+        long getArrTime = testGetList(arrayList);
+        long getLinkedTime = testGetList(linkedList);
+        long deleteArrTime = testDeleteList(arrayList);
+        long deleteLinkedTime = testDeleteList(linkedList);
+
+        System.out.printf("%-25s%-25s%-25s%-25s%n", "Метод выполнялся раз:", 300000, 10000, 10000);
+        System.out.printf("%-25s%-25s%-25s%-25s%n", "LinkedList", addToEndLinkedTime + "ms", getLinkedTime + "ms", deleteLinkedTime + "ms");
+        System.out.printf("%-25s%-25s%-25s%-25s%n", "ArrayList", addToEndArrTime + "ms", getArrTime + "ms", deleteArrTime + "ms");
+    }
+
+    /**
      * Time measurement for the add method
      * @param list object of List class (ArrayList or LinkedList)
      * @return amount of time for add operation
@@ -26,6 +48,19 @@ public class Main {
         long startTime = System.currentTimeMillis();
         for (int i = 0; i < 10000; i++) {
             int val = list.get(i);
+        }
+        return System.currentTimeMillis() - startTime;
+    }
+
+    /**
+     * Time measurement for the delete method
+     * @param list object of List class (ArrayList or LinkedList)
+     * @return amount of time for delete operation
+     */
+    public static long testDeleteList(List<Integer> list) {
+        long startTime = System.currentTimeMillis();
+        for (int i = 0; i < 10000; i++) {
+            list.remove(i);
         }
         return System.currentTimeMillis() - startTime;
     }
